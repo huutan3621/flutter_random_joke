@@ -101,13 +101,16 @@ class _RandomJokePageState extends State<RandomJokePage> {
                                 setState(() {
                                   number++;
                                 });
-                                DatabaseHelper.updateJoke(
-                                  Jokes(
-                                      id: snapshot.data![number].id,
-                                      content: snapshot.data![number].content,
-                                      hasRead: 1,
-                                      hasLiked: 1),
-                                );
+                                if (number < jokesList.length) {
+                                  DatabaseHelper.updateJoke(
+                                    Jokes(
+                                        id: snapshot.data![number].id,
+                                        content: snapshot.data![number].content,
+                                        hasRead: 1,
+                                        hasLiked: 1),
+                                  );
+                                }
+                                print(snapshot.data![number - 1].hasLiked);
                               },
                             ),
                             BaseButton(
@@ -117,14 +120,16 @@ class _RandomJokePageState extends State<RandomJokePage> {
                                 setState(() {
                                   number++;
                                 });
-                                DatabaseHelper.updateJoke(
-                                  Jokes(
-                                      id: snapshot.data![number].id,
-                                      content: snapshot.data![number].content,
-                                      hasRead: 1,
-                                      hasLiked: 0),
-                                );
-                                // print(snapshot.data![number - 1].hasRead);
+                                if (number < jokesList.length) {
+                                  DatabaseHelper.updateJoke(
+                                    Jokes(
+                                        id: snapshot.data![number].id,
+                                        content: snapshot.data![number].content,
+                                        hasRead: 1,
+                                        hasLiked: 0),
+                                  );
+                                }
+                                print(snapshot.data![number - 1].hasLiked);
                               },
                             ),
                           ],
