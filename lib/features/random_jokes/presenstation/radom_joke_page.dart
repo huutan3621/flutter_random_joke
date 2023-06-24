@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_random_joke/features/random_jokes/models/jokes_content.dart';
+import 'package:flutter_random_joke/features/random_jokes/models/jokes_model.dart';
 import 'package:flutter_random_joke/features/services/db_helper.dart';
 import 'package:flutter_random_joke/features/shared_ui/button/base_btn.dart';
 
@@ -100,6 +101,13 @@ class _RandomJokePageState extends State<RandomJokePage> {
                                 setState(() {
                                   number++;
                                 });
+                                DatabaseHelper.updateJoke(
+                                  Jokes(
+                                      id: snapshot.data![number].id,
+                                      content: snapshot.data![number].content,
+                                      hasRead: 1,
+                                      hasLiked: 1),
+                                );
                               },
                             ),
                             BaseButton(
@@ -109,6 +117,14 @@ class _RandomJokePageState extends State<RandomJokePage> {
                                 setState(() {
                                   number++;
                                 });
+                                DatabaseHelper.updateJoke(
+                                  Jokes(
+                                      id: snapshot.data![number].id,
+                                      content: snapshot.data![number].content,
+                                      hasRead: 1,
+                                      hasLiked: 0),
+                                );
+                                // print(snapshot.data![number - 1].hasRead);
                               },
                             ),
                           ],
