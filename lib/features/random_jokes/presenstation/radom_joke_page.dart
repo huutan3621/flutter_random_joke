@@ -18,16 +18,7 @@ class _RandomJokePageState extends State<RandomJokePage> {
     // TODO: implement initState
     super.initState();
     number;
-    // randomNumber(number);
   }
-
-  // void updateJokeId(int jokeId) {}
-  // int randomNumber(int number) {
-  //   int max = jokesList.length;
-
-  //   int randomNumber = Random().nextInt(max) + 1;
-  //   return randomNumber;
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +33,9 @@ class _RandomJokePageState extends State<RandomJokePage> {
               if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               }
-              if (number == jokesList.length) {
-                return const Center(child: Text("Out of Jokes"));
+              if (number >= jokesList.length) {
+                return const Center(
+                    child: Text("That's all for today. Comeback later"));
               } else {
                 List<Object> data = snapshot.data ?? [];
                 return SizedBox(
