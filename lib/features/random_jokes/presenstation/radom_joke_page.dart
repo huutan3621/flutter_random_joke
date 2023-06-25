@@ -17,7 +17,7 @@ class _RandomJokePageState extends State<RandomJokePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    number;
+    // number;
   }
 
   @override
@@ -37,7 +37,7 @@ class _RandomJokePageState extends State<RandomJokePage> {
                 return const Center(
                     child: Text("That's all for today. Comeback later"));
               } else {
-                List<Object> data = snapshot.data ?? [];
+                // List<Object> data = snapshot.data ?? [];
                 return SizedBox(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -88,8 +88,6 @@ class _RandomJokePageState extends State<RandomJokePage> {
                               title: 'This is funny',
                               btnColor: Colors.blue,
                               onTap: () {
-                                // print(firstJoke.id);
-                                print(snapshot.data![3].content);
                                 setState(() {
                                   number++;
                                 });
