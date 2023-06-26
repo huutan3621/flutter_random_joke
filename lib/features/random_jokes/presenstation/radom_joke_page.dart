@@ -23,6 +23,31 @@ class _RandomJokePageState extends State<RandomJokePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        leading: Image.asset("assets/logo.png"),
+        actions: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: const <Widget>[
+              Text(
+                "Vo Huu Tan",
+                style: TextStyle(color: Colors.grey),
+              ),
+              Text(
+                "abc@gmail.com",
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
+          ),
+          const Padding(
+              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: CircleAvatar(
+                  backgroundImage: AssetImage("assets/avatar.jpg")))
+        ],
+      ),
       body: FutureBuilder(
         future: DatabaseHelper.getAllJokes(),
         builder: ((context, snapshot) {
@@ -42,10 +67,6 @@ class _RandomJokePageState extends State<RandomJokePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        flex: 1,
-                        child: Container(),
-                      ),
                       Expanded(
                         flex: 2,
                         child: Container(
@@ -71,14 +92,13 @@ class _RandomJokePageState extends State<RandomJokePage> {
                         ),
                       ),
                       Expanded(
-                        flex: 6,
+                        flex: 8,
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           alignment: Alignment.center,
                           child: Text(snapshot.data![number].content ?? "null"),
                         ),
                       ),
-                      // Center(child: Text(firstJoke.content)),
                       Expanded(
                         flex: 1,
                         child: Row(
@@ -124,7 +144,29 @@ class _RandomJokePageState extends State<RandomJokePage> {
                             ),
                           ],
                         ),
-                      )
+                      ),
+                      Container(
+                        height: 0.3,
+                        width: double.infinity,
+                        color: Colors.black12,
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: const <Widget>[
+                            Text(
+                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                              style: TextStyle(
+                                color: Colors.grey,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text("Copyright 2023")
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 );
